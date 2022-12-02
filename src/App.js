@@ -18,6 +18,7 @@ function App() {
   let navigate = useNavigate();
   const handleAction = (id) => {
     const authentication = getAuth();
+    //create mongo user when they create account. On mongo side verify userid doesn't already exist to be sure it's a new account
     if (id === 2) {
       createUserWithEmailAndPassword(authentication, email, password)
         .then((response) => {
