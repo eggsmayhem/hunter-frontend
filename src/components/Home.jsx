@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from "./Button"
 
@@ -7,17 +7,20 @@ import { getAuth } from "firebase/auth";
 import axios from "axios";
 
 export default function Home() {
+    const [audioUrl, setAudioUrl] = useState(null);
     let navigate = useNavigate();
+
     const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
         navigate('/login')
     }
 
-    const handleDummy = async (req, res) => {
-        const auth = getAuth();
-        const user = auth.currentUser;
+    const handleDummy = async () => {
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
 
-        if (user) {
+            if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     // ...
@@ -27,22 +30,31 @@ export default function Home() {
         //    }
         //    console.log(data);
 
-           const res = await axios.post(`http://127.0.0.1:3000/exchanges/speaktohunter/${user.uid}`, {
-               data: {
-                text: "Hunter test from distributed system"
-               }
-           });
-           console.log(res)
-           const s3_url = res.data.s3;
-           console.log(s3_url)
+                const res = await axios.post(`http://127.0.0.1:3000/exchanges/speaktohunter/${user.uid}`, {
+                    data: {
+                    text: "Hunter test from distributed system"
+                    }
+                });
+
+                console.log(res);
+                const s3_url = await res.data.s3;
+                console.log(s3_url);
+                setAudioUrl(s3_url)
+        //    let audio = new Audio(s3_url);
+        //    audio.play();
         //    const verification = res.data.body.message; 
         //    const hunterResponse = res.data.body.data.text
         //    console.log(verification)
         //    console.log(hunterResponse)
-        } else {
+            }else {
             console.log("No user")
     // No user is signed in.
-    }
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+        
 
     }
     //don't delete below comment, it stops the console from sreaming
@@ -62,7 +74,13 @@ export default function Home() {
     return (
         <div>
             <Button handleAction={handleLogout} title="Logout"></Button>
-            <Button handleAction={handleDummy} title="Dummy"></Button>
+            <Button handleAction={handleDummy} title="Dummy">News</Button>
+            {audioUrl && <audio
+                            // ref="audio_tag"
+                            autoPlay={true}
+                            controls={true} >
+                            <source type="audio/mp3" src={audioUrl} />
+                        </audio>}
         </div>
     )
 }
