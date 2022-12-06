@@ -26,8 +26,19 @@ export default function Home() {
         //        uid: "K3zo9YSEejSyTXLeD3PZflw96xD2"
         //    }
         //    console.log(data);
-           const res = await axios.get(`http://127.0.0.1:3000/overview/${user.uid}`);
+
+           const res = await axios.post(`http://127.0.0.1:3000/exchanges/speaktohunter/${user.uid}`, {
+               data: {
+                text: "Hunter test from distributed system"
+               }
+           });
            console.log(res)
+           const s3_url = res.data.s3;
+           console.log(s3_url)
+        //    const verification = res.data.body.message; 
+        //    const hunterResponse = res.data.body.data.text
+        //    console.log(verification)
+        //    console.log(hunterResponse)
         } else {
             console.log("No user")
     // No user is signed in.
