@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from "./Button"
+import styles from "../App.css"
 
 //testing dummy button
 import { getAuth } from "firebase/auth";
@@ -106,15 +107,15 @@ export default function Home() {
         }
     }, [useNavigate])
     return (
-        <div>
+        <div className="black">
             <Button handleAction={handleLogout} title="Logout"></Button>
             <Button handleAction={handleDummy} title="Chat"></Button>
             <Button handleAction={handleNews} title="News"> </Button>
             {audioUrl && <audio
                             // ref="audio_tag"
                             autoPlay={true}
-                            controls={true} >
-                            <source type="audio/mp3" src={audioUrl} />
+                            controls={false} >
+                            <source type="audio/mp3" src={audioUrl} className={styles.audioplayer}/>
                         </audio>}
         </div>
     )
