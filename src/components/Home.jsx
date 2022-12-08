@@ -57,6 +57,40 @@ export default function Home() {
         
 
     }
+
+    const handleNews = async () => {
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+
+            if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    // ...
+        //    console.log(user.uid)
+        //    const data = {
+        //        uid: "K3zo9YSEejSyTXLeD3PZflw96xD2"
+        //    }
+        //    console.log(data);
+
+                const res = await axios.post(`http://127.0.0.1:3000/exchanges/getthenews/${user.uid}`, {
+                    data: {
+                    text: "Hunter test from distributed system"
+                    }
+                });
+
+                console.log(res);
+                const s3_url = await res.data.s3;
+                console.log(s3_url);
+                setAudioUrl(s3_url)
+            }else {
+            console.log("No user")
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
     //don't delete below comment, it stops the console from sreaming
 
     // eslint-disable-next-line
@@ -74,7 +108,8 @@ export default function Home() {
     return (
         <div>
             <Button handleAction={handleLogout} title="Logout"></Button>
-            <Button handleAction={handleDummy} title="Dummy">News</Button>
+            <Button handleAction={handleDummy} title="Chat"></Button>
+            <Button handleAction={handleNews} title="News"> </Button>
             {audioUrl && <audio
                             // ref="audio_tag"
                             autoPlay={true}
