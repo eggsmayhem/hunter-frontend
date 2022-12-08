@@ -9,6 +9,7 @@ import axios from "axios";
 
 export default function Home() {
     const [audioUrl, setAudioUrl] = useState(null);
+    const [article, setArticle] = useState([]);
     let navigate = useNavigate();
 
     const handleLogout = () => {
@@ -39,6 +40,7 @@ export default function Home() {
 
                 console.log(res);
                 const s3_url = await res.data.s3;
+             
                 console.log(s3_url);
                 setAudioUrl(s3_url)
         //    let audio = new Audio(s3_url);
@@ -82,8 +84,11 @@ export default function Home() {
 
                 console.log(res);
                 const s3_url = await res.data.s3;
+                const newsArray = res.data.newsArray;
+                const hunterText = res.data.hunterText;
                 console.log(s3_url);
                 setAudioUrl(s3_url)
+                setArticle(newsArray);
             }else {
             console.log("No user")
             }
@@ -108,6 +113,25 @@ export default function Home() {
     }, [useNavigate])
     return (
         <div className="black">
+            {/* newspaper */}
+            <div className="container">
+                <div className="wrapper">
+                    <div className="size-in">
+                        <div className="newspaper">
+                            <div className="title">
+                                <h3>Rainy Cold</h3>  <h1>The Daily DL</h1> <h3>6 A.M. Extra </h3>
+                            </div>
+
+                            <hr/>
+                            <h4><span>Vol XVI</span> <span>April 1, 2017</span><span>$1.00</span></h4>
+                            <hr/>
+                            <h2>{article[0]}</h2>
+                            <p>{article[1]}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* nespaper end */}
             <Button handleAction={handleLogout} title="Logout"></Button>
             <Button handleAction={handleDummy} title="Chat"></Button>
             <Button handleAction={handleNews} title="News"> </Button>
