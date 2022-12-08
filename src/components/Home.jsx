@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from "./Button"
+import Newspaper from "./Newspaper"
 import styles from "../App.css"
 
 //testing dummy button
@@ -10,6 +11,8 @@ import axios from "axios";
 export default function Home() {
     const [audioUrl, setAudioUrl] = useState(null);
     const [article, setArticle] = useState([]);
+    const [newsDate, setNewsDate] = useState("");
+
     let navigate = useNavigate();
 
     const handleLogout = () => {
@@ -85,7 +88,12 @@ export default function Home() {
                 console.log(res);
                 const s3_url = await res.data.s3;
                 const newsArray = res.data.newsArray;
-                const hunterText = res.data.hunterText;
+                const Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+              
+                const date = new Date();
+                const month = date.getMonth();
+                setNewsDate(`${Months[month]} ${date.getDate()}, ${date.getUTCFullYear()}`)
+                // const hunterText = res.data.hunterText;
                 console.log(s3_url);
                 setAudioUrl(s3_url)
                 setArticle(newsArray);
@@ -114,23 +122,7 @@ export default function Home() {
     return (
         <div className="black">
             {/* newspaper */}
-            <div className="container">
-                <div className="wrapper">
-                    <div className="size-in">
-                        <div className="newspaper">
-                            <div className="title">
-                                <h3>Rainy Cold</h3>  <h1>The Daily DL</h1> <h3>6 A.M. Extra </h3>
-                            </div>
-
-                            <hr/>
-                            <h4><span>Vol XVI</span> <span>April 1, 2017</span><span>$1.00</span></h4>
-                            <hr/>
-                            <h2>{article[0]}</h2>
-                            <p>{article[1]}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Newspaper key={article[0]} newsArray={article} todaysDate={newsDate}/>
             {/* nespaper end */}
             <Button handleAction={handleLogout} title="Logout"></Button>
             <Button handleAction={handleDummy} title="Chat"></Button>

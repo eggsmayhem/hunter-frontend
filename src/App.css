@@ -112,7 +112,7 @@ p:first-child:first-letter {
   border-radius: 5% 5% 1% 1%;
   width: 80%;
   transform-origin: center;
-  animation: spin 3s 1 linear;
+  animation: spin 1s 1 linear;
   padding: 10px 30px;
   max-height: 400px;
   overflow: scroll;
