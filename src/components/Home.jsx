@@ -24,11 +24,26 @@ export default function Home() {
         console.log(event.target.value);
       };
    
-    let navigate = useNavigate();
+    
     const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
         navigate('/login')
     }
+    let navigate = useNavigate();
+     //don't delete below comment, it stops the console from sreaming
+
+    // eslint-disable-next-line
+    useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/home')
+        }
+
+        if (!authToken) {
+            navigate('/login')
+        }
+    }, [])
 
     const handleDummy = async () => {
         try {
@@ -118,27 +133,13 @@ export default function Home() {
             console.log(err);
         }
     }
-    //don't delete below comment, it stops the console from sreaming
-
-    // eslint-disable-next-line
-    useEffect(() => {
-        let authToken = sessionStorage.getItem('Auth Token')
-
-        if (authToken) {
-            navigate('/home')
-        }
-
-        if (!authToken) {
-            navigate('/login')
-        }
-    }, [useNavigate])
+   
     return (
         <div className="black">
-             
             {/* newspaper */}
             <Newspaper key={article[0]} newsArray={article} todaysDate={newsDate}/>
             {/* nespaper end */}
-            <Inputform text={speechText}/>
+            <Inputform ref={speechText} changeHandler={handleMessageChange} messageValue={message}/>
             <Button handleAction={handleLogout} title="Logout"></Button>
             <Button handleAction={handleDummy} title="Chat"></Button>
             <Button handleAction={handleNews} title="News"> </Button>
