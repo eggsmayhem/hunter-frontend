@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from "./Button"
 import Newspaper from "./Newspaper"
-import styles from "../App.css"
+import Inputform from "./Inputform"
 import Audioplayer from "./Audioplayer"
+import styles from "../App.css"
 
 //testing dummy button
 import { getAuth } from "firebase/auth";
@@ -133,13 +134,11 @@ export default function Home() {
     }, [useNavigate])
     return (
         <div className="black">
-             <div>
-                {/* <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Click Send to send a message, or News to get GPT-Hunter's opinion on a random news story</label> */}
-                <textarea id="message" name="message"  ref={speechText} rows="4" placeholder="Your message..."></textarea>
-            </div>
+             
             {/* newspaper */}
             <Newspaper key={article[0]} newsArray={article} todaysDate={newsDate}/>
             {/* nespaper end */}
+            <Inputform text={speechText}/>
             <Button handleAction={handleLogout} title="Logout"></Button>
             <Button handleAction={handleDummy} title="Chat"></Button>
             <Button handleAction={handleNews} title="News"> </Button>
