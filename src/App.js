@@ -10,6 +10,7 @@ import {
 import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios"
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -23,8 +24,12 @@ function App() {
       createUserWithEmailAndPassword(authentication, email, password)
         .then((response) => {
           try {
-            navigate('/home')
-            sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+            // test create call
+            //end create call test
+            const id = authentication.currentUser.uid;
+            axios.post(`http://127.0.0.1:3000/users/createuser/${id}`);
+            navigate('/home');
+            sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
           }
           catch(err) {
             console.log(err)
