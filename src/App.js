@@ -44,6 +44,8 @@ function App() {
       signInWithEmailAndPassword(authentication, email, password)
         .then((response) => {
           try {
+            const user = authentication.currentUser
+            axios.get(`http://127.0.0.1:3000/users/overview/${user.uid}`);
             navigate('/home')
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
           }
