@@ -16,6 +16,7 @@ export default function Home() {
     const [article, setArticle] = useState([]);
     const [newsDate, setNewsDate] = useState("");
     const [message, setMessage] = useState('');
+    // const [user, setUser] = useState({});
     const speechText = useRef();
 
   
@@ -45,6 +46,12 @@ export default function Home() {
             navigate('/login')
         }
     }, [])
+
+    // useEffect(() => {
+    //     const auth = getAuth();
+    //     setUser(auth.currentUser);
+    //     console.log(user);
+    // })
 
     const handleDummy = async () => {
         try {

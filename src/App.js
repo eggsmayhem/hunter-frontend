@@ -26,8 +26,8 @@ function App() {
           try {
             // test create call
             //end create call test
-            const id = authentication.currentUser.uid;
-            axios.post(`http://127.0.0.1:3000/users/createuser/${id}`);
+            const user = authentication.currentUser;
+            axios.post(`http://127.0.0.1:3000/users/createuser/${user.uid}`);
             navigate('/home');
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
           }
