@@ -1,40 +1,35 @@
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.black {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  spacing: flex-around;
+  gap: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.buttons {
+  display: flex;
+  gap: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.topContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.authorArt {
+  max-width: 50%;
+}
+
+.textHolder {
+  width: 350px;
 }
 
 .audioplayer {
@@ -45,10 +40,26 @@
 .container {
   width: 500px;
   height: 500px;
-  background-color: white;
+  background-color: #212F3C;
   margin: auto;
   border-radius: 2%;
   /* border: 5px dotted black; */
+}
+
+@media only screen  
+and (max-device-width : 480px) {
+  .container {
+    width: 400px;
+    height: 400px;
+    background-color: #212F3C;
+    margin: auto;
+    border-radius: 2%;
+    /* border: 5px dotted black; */
+  }
+  .newspaperSlot {
+    height: 400px;
+    width: 400px;
+  }
 }
 
 .wrapper {
@@ -61,6 +72,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.newspaperSlot {
+  height: 500px;
+  width: 500px;
 }
 
 /********************************** 

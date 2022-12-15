@@ -5,6 +5,7 @@ import Newspaper from "./Newspaper"
 import Inputform from "./Inputform"
 import Audioplayer from "./Audioplayer"
 import styles from "../App.css"
+import hunterImg from "../assets/hunterbotdallenobg2.png"
 
 //testing dummy button
 import { getAuth } from "firebase/auth";
@@ -136,14 +137,25 @@ export default function Home() {
    
     return (
         <div className="black">
-            {/* newspaper */}
-            <Newspaper key={article[0]} newsArray={article} todaysDate={newsDate}/>
-            {/* nespaper end */}
+            <div className="topContainer">
+                <div>I'm <i>not</i> Hunter S Thompson, and I <i>don't</i> approve this message</div>
+                <a href="#">Read more about this project</a>
+                <img src={hunterImg} className="authorArt"/>
+                <div>Send a message with Chat, or press News to get Hunterbot's take on a random news article</div>
+            </div>
+           
             <Inputform ref={speechText} changeHandler={handleMessageChange} messageValue={message}/>
-            <Button handleAction={handleLogout} title="Logout"></Button>
-            <Button handleAction={handleDummy} title="Chat"></Button>
-            <Button handleAction={handleNews} title="News"> </Button>
+            <div className="buttons">
+                <Button handleAction={handleDummy} title="Chat"></Button>
+                <Button handleAction={handleNews} title="News"> </Button>
+            </div>
             {audioUrl && <Audioplayer key={audioUrl} sound={audioUrl}/>}
+             {/* newspaper */}
+             <div className="newspaperSlot">
+                <Newspaper key={article[0]} newsArray={article} todaysDate={newsDate}/>
+            </div>
+            {/* nespaper end */}
+            <Button handleAction={handleLogout} title="Logout"></Button>
             
         </div>
     )
