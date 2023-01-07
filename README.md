@@ -1,3 +1,13 @@
+# Hunterbot
+
+Hunterbot is an attempt to give personality, strong opinions, and a voice to a chatbot. This is one example in a larger project intented to push the boundaries of bot embodyment by exploring how to extend the domain of chatbots (by giving them voices, strong personalities, the ability to browse the interet, and other senses such as hearing).
+
+## Tech stack
+Hunterbot is made with React, Node/Express, OpenAi, NewsAPI, and AWS lambda/Amazon polly. User input is either sent directly to the OpenAI API, or a query is made to the NewsAPI to select a random news article and then ask Hunterbot's opinion on the news, then is routed to an AWS lambda that runs the text through Polly, creates an audio file, saves the file in an S3 bucket and returns the file's URL to the front end to be automatically played in a React audio component. 
+
+## Lessons Learned 
+My main takeaway is that I need to determine a go-to rate-limiting system for my growing suite of API's, as I feel this task always takes me longer than is necessary, and this is one I should either automate or write into a reusable component. 
+
 # GPT artistic chatbot frontend
 "I'm not Hunter S Thompson, and I don't approve this message."
 
