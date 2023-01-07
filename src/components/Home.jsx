@@ -97,6 +97,7 @@ export default function Home() {
         try {
             const auth = getAuth();
             const user = auth.currentUser;
+            if (user) console.log(user.uid)
 
             if (user) {
     // User is signed in, see docs for a list of available properties
