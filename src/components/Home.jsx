@@ -16,6 +16,7 @@ export default function Home() {
     const [article, setArticle] = useState([]);
     const [newsDate, setNewsDate] = useState("");
     const [message, setMessage] = useState('');
+    // const [user, setUser] = useState({});
     const speechText = useRef();
 
   
@@ -46,6 +47,12 @@ export default function Home() {
         }
     }, [])
 
+    // useEffect(() => {
+    //     const auth = getAuth();
+    //     setUser(auth.currentUser);
+    //     console.log(user);
+    // })
+
     const handleDummy = async () => {
         try {
             const auth = getAuth();
@@ -74,16 +81,9 @@ export default function Home() {
                 console.log(s3_url);
                 setMessage('');
                 setAudioUrl(s3_url);
-             
-        //    let audio = new Audio(s3_url);
-        //    audio.play();
-        //    const verification = res.data.body.message; 
-        //    const hunterResponse = res.data.body.data.text
-        //    console.log(verification)
-        //    console.log(hunterResponse)
+
             }else {
             console.log("No user")
-    // No user is signed in.
             }
         }
         catch(err) {
