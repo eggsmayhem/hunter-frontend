@@ -16,7 +16,6 @@ export default function Home() {
     const [article, setArticle] = useState([]);
     const [newsDate, setNewsDate] = useState("");
     const [message, setMessage] = useState('');
-    // const [user, setUser] = useState({});
     const speechText = useRef();
 
   
@@ -39,7 +38,7 @@ export default function Home() {
         let authToken = sessionStorage.getItem('Auth Token')
 
         if (authToken) {
-            navigate('/home')
+            navigate('/')
         }
 
         if (!authToken) {
@@ -47,13 +46,7 @@ export default function Home() {
         }
     }, [])
 
-    // useEffect(() => {
-    //     const auth = getAuth();
-    //     setUser(auth.currentUser);
-    //     console.log(user);
-    // })
-
-    const handleDummy = async () => {
+    const handleChat = async () => {
         try {
             const auth = getAuth();
             const user = auth.currentUser;
@@ -123,7 +116,7 @@ export default function Home() {
                 const date = new Date();
                 const month = date.getMonth();
                 setNewsDate(`${Months[month]} ${date.getDate()}, ${date.getUTCFullYear()}`)
-                // const hunterText = res.data.hunterText;
+                
                 console.log(s3_url);
                 setAudioUrl(s3_url);
                 setArticle(newsArray);
@@ -147,7 +140,7 @@ export default function Home() {
            
             <Inputform ref={speechText} changeHandler={handleMessageChange} messageValue={message}/>
             <div className="buttons">
-                <Button handleAction={handleDummy} title="Chat"></Button>
+                <Button handleAction={handleChat} title="Chat"></Button>
                 <Button handleAction={handleNews} title="News"> </Button>
             </div>
             {audioUrl && <Audioplayer key={audioUrl} sound={audioUrl}/>}
