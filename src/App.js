@@ -7,9 +7,9 @@ import {
   Route,
   useNavigate
 } from "react-router-dom";
-import { app } from './firebase-config';
+// import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
 import 'react-toastify/dist/ReactToastify.css';
 
