@@ -62,7 +62,7 @@ export default function Home() {
         //    }
         //    console.log(data);
 
-                const res = await axios.post(`http://127.0.0.1:3000/exchanges/speaktohunter/${user.uid}`, {
+                const res = await axios.post(`https://hunterbot-api.onrender.com//exchanges/speaktohunter/${user.uid}`, {
                     data: {
                     text: userInput
                     }
@@ -102,7 +102,7 @@ export default function Home() {
         //    }
         //    console.log(data);
 
-                const res = await axios.post(`http://127.0.0.1:3000/exchanges/getthenews/${user.uid}`, {
+                const res = await axios.post(`https://hunterbot-api.onrender.com//exchanges/getthenews/${user.uid}`, {
                     data: {
                     text: "Hunter test from distributed system"
                     }
