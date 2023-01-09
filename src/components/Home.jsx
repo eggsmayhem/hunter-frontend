@@ -44,7 +44,7 @@ export default function Home() {
         if (!authToken) {
             navigate('/login')
         }
-        // eslint-disable-next-line react-hooks/exhaustive-dep
+        // eslint-disable-next-line
     }, [])
 
     const handleChat = async () => {
