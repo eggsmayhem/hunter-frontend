@@ -28,7 +28,7 @@ function App() {
             //end create call test
             const user = authentication.currentUser;
             axios.post(`http://127.0.0.1:3000/users/createuser/${user.uid}`);
-            navigate('/home');
+            navigate('/');
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
           }
           catch(err) {
@@ -46,7 +46,7 @@ function App() {
           try {
             const user = authentication.currentUser
             axios.get(`http://127.0.0.1:3000/users/overview/${user.uid}`);
-            navigate('/home')
+            navigate('/')
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
           }
           catch(err) {
@@ -88,7 +88,7 @@ function App() {
           />
 
           <Route
-            path='/home'
+            path='/'
             element={
               <Home />}
           />
