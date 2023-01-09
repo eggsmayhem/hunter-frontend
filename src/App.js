@@ -7,7 +7,8 @@ import {
   Route,
   useNavigate
 } from "react-router-dom";
-// import { app } from './firebase-config';
+ // eslint-disable-next-line
+import { app } from './firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 // import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
