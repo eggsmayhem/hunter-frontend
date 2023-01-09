@@ -33,9 +33,9 @@ function App() {
           }
           catch(err) {
             console.log(err)
-            if (err.code === 'auth/email-already-in-use') {
-              toast.error('Email Already in Use');
-            }
+            // if (err.code === 'auth/email-already-in-use') {
+            //   toast.error('Email Already in Use');
+            // }
           }
           
         })
@@ -50,12 +50,12 @@ function App() {
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
           }
           catch(err) {
-            if(err.code === 'auth/wrong-password'){
-              toast.error('Please check the Password');
-            }
-            if(err.code === 'auth/user-not-found'){
-              toast.error('Please check the Email');
-            }
+            // if(err.code === 'auth/wrong-password'){
+            //   toast.error('Please check the Password');
+            // }
+            // if(err.code === 'auth/user-not-found'){
+            //   toast.error('Please check the Email');
+            // }
             console.log(err)
           }
      
