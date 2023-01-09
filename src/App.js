@@ -28,7 +28,7 @@ function App() {
             // test create call
             //end create call test
             const user = authentication.currentUser;
-            axios.post(`https://hunterbot-api.onrender.com//users/createuser/${user.uid}`);
+            axios.post(`https://hunterbot-api.onrender.com/users/createuser/${user.uid}`);
             navigate('/');
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
           }
@@ -46,7 +46,7 @@ function App() {
         .then((response) => {
           try {
             const user = authentication.currentUser
-            axios.get(`https://hunterbot-api.onrender.com//users/overview/${user.uid}`);
+            axios.get(`https://hunterbot-api.onrender.com/users/overview/${user.uid}`);
             navigate('/')
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
           }
