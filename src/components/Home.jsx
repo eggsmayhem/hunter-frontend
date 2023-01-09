@@ -4,7 +4,7 @@ import Button from "./Button"
 import Newspaper from "./Newspaper"
 import Inputform from "./Inputform"
 import Audioplayer from "./Audioplayer"
-import styles from "../App.css"
+// import styles from "../App.css"
 import hunterImg from "../assets/hunterbotdallenobg2.png"
 
 //testing dummy button
@@ -133,8 +133,8 @@ export default function Home() {
         <div className="black">
             <div className="topContainer">
                 <div>I'm <i>not</i> Hunter S Thompson, and I <i>don't</i> approve this message</div>
-                <a href="#">Read more about this project</a>
-                <img src={hunterImg} className="authorArt"/>
+                {/* <a href="#">Read more about this project</a> */}
+                <img src={hunterImg} className="authorArt" alt="a stylized cartoon of Hunter S Thompson"/>
                 <div>Send a message with Chat, or press News to get Hunterbot's take on a random news article</div>
             </div>
            
