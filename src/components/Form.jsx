@@ -34,6 +34,8 @@ export default function BasicTextFields({ title, setPassword, setEmail, handleAc
             </Box>
 
             <Button title={title} handleAction={handleAction}/>
+            <a href="/register">I don't have an account</a>
+            <a href="/login">I have an account, log in</a>
         </div>
     );
 }
